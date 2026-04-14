@@ -40,27 +40,27 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
   deploy:
-  needs: build-and-push
-  runs-on: ubuntu-latest
-  steps:
-    - name: Deploy to Cloud Server via SSH
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.DOCKER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        proxy_host: ${{ secrets.BASTION_HOST }}
-        proxy_username: ${{ secrets.SERVER_USER }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        script: |
-          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-          docker stop devops-app || true
-          docker rm devops-app || true
-          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
-          docker run -d \
-            --name devops-app \
-            -p 3000:3000 \
-            --restart always \
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Cloud Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DOCKER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          proxy_host: ${{ secrets.BASTION_HOST }}
+          proxy_username: ${{ secrets.SERVER_USER }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          proxy_passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+            docker stop devops-app || true
+            docker rm devops-app || true
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+            docker run -d \
+              --name devops-app \
+              -p 3000:3000 \
+              --restart always \
+              ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
