@@ -17,7 +17,7 @@ const actividades = [
     id: 3,
     nombre: 'Actividad 3',
     descripcion: 'Implementación de Pipeline CI/CD con Filtros de Calidad'
-  },
+  }
 ]
 
 router.get('/', (req, res) => {
