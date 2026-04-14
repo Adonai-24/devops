@@ -15,7 +15,8 @@ const productos = [
     id: 2,
     nombre: 'PC Gamer Elite',
     precio: 2200,
-    imagen: '/assets/img/products/pexels-jorge-david-arley-campos-3570916-5569379.webp',
+    imagen:
+      '/assets/img/products/pexels-jorge-david-arley-campos-3570916-5569379.webp',
     descripcion: 'Potencia de escritorio sin límites.',
     detalles:
       'PC con Ryzen 7, RTX 4070, 32GB RAM y SSD NVMe. Diseñada para gaming en ultra y creación de contenido.'
@@ -46,7 +47,7 @@ const productos = [
     descripcion: 'Fluidez y ventaja competitiva.',
     detalles:
       'Monitor Full HD/2K, 165Hz, 1ms de respuesta. Ideal para shooters y juegos competitivos.'
-  },
+  }
   // {
   //   id: 6,
   //   nombre: 'Headset Gamer 7.1 RGB',

@@ -12,7 +12,7 @@ jobs:
   sonarQube-analysis:
     name: Análisis de Calidad de Código
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Clonación del repositorio (Checkout)
         uses: actions/checkout@v3
