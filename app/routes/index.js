@@ -12,7 +12,12 @@ const actividades = [
     id: 2,
     nombre: 'Actividad 2',
     descripcion: 'Implementación de SAST con SonarQube y GitHub Actions'
-  }
+  },
+  {
+    id: 3,
+    nombre: 'Actividad 3',
+    descripcion: 'Implementación de Pipeline CI/CD con Filtros de Calidad'
+  },
 ]
 
 router.get('/', (req, res) => {
